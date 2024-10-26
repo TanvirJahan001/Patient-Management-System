@@ -23,7 +23,6 @@ A simple and user-friendly Patient Management System built with React. This appl
 
 ![Patient Management System](screenshot.png)
 
-_Replace the above image path with the actual path of your screenshot._
 
 ## Technologies Used
 
