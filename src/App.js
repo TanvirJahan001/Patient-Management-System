@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useEffect, useState } from "react";
+import Filter from "./components/Filter";
+import PatientForm from "./components/PatientForm";
+import PatientList from "./components/PatientList";
+import TotalEarnings from "./components/TotalEarnings"; // Import TotalEarnings
 
-function App() {
+export default function App() {
+  const [patients, setPatients] = useState(() => {
+    const savedPatients = localStorage.getItem("patients");
+    return savedPatients ? JSON.parse(savedPatients) : [];
+  });
+
+  const [filterValue, setFilterValue] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("patients", JSON.stringify(patients));
+  }, [patients]);
+
+  const handleAddPatient = (newPatient) => {
+    setPatients((prevPatients) => [...prevPatients, newPatient]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-gradient-to-r from-green-300 to-blue-300 min-h-screen p-4">
+      <h1 className="text-4xl font-bold text-center text-purple-800 mb-6">
+        Patient Management System
+      </h1>
+      <div className="bg-white rounded-xl shadow-md p-6 mb-6">
+        <PatientForm onAddPatient={handleAddPatient} />
+      </div>
+      <div className="bg-white rounded-xl shadow-md p-6 mb-6">
+        <Filter value={filterValue} setValue={setFilterValue} />
+        <PatientList
+          patients={patients}
+          filterValue={filterValue}
+          deletePatient={(id) =>
+            setPatients(patients.filter((patient) => patient.id !== id))
+          }
+        />
+      </div>
+      <TotalEarnings patients={patients} /> {/* Add TotalEarnings here */}
     </div>
   );
 }
-
-export default App;
