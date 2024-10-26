@@ -28,7 +28,7 @@ const PatientList = ({ patients, filterValue, deletePatient }) => {
               <th className="py-3 px-4 text-sm font-medium">Phone</th>
               <th className="py-3 px-4 text-sm font-medium">Diagnosis</th>
               <th className="py-3 px-4 text-sm font-medium">Treatment</th>
-              <th className="py-3 px-4 text-sm font-medium">Price</th>
+              <th className="py-3 px-4 text-sm font-medium">Amount</th>
               <th className="py-3 px-4 text-sm font-medium">Date</th>
               <th className="py-3 px-4 text-sm font-medium">Actions</th>
             </tr>
