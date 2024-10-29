@@ -8,11 +8,20 @@ const PatientForm = ({ onAddPatient }) => {
   const [treatment, setTreatment] = useState("");
   const [price, setPrice] = useState("");
   const [date, setDate] = useState("");
+  const [location, setLocation] = useState("Rajshahi"); // Location dropdown state
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name || !phoneNumber || !illness || !treatment || !price || !date) {
+    if (
+      !name ||
+      !phoneNumber ||
+      !illness ||
+      !treatment ||
+      !price ||
+      !date ||
+      !location
+    ) {
       alert("All fields are required!");
       return;
     }
@@ -25,6 +34,7 @@ const PatientForm = ({ onAddPatient }) => {
       treatment,
       price: parseFloat(price),
       date,
+      location, // Include location in patient object
     };
 
     onAddPatient(newPatient);
@@ -36,6 +46,7 @@ const PatientForm = ({ onAddPatient }) => {
     setTreatment("");
     setPrice("");
     setDate("");
+    setLocation("Rajshahi");
   };
 
   return (
@@ -47,6 +58,7 @@ const PatientForm = ({ onAddPatient }) => {
         Add Patient
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Previous input fields */}
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-1">
             Name
@@ -123,6 +135,20 @@ const PatientForm = ({ onAddPatient }) => {
             required
             className="p-3 w-full border rounded-lg"
           />
+        </div>
+        {/* New location dropdown */}
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">
+            Location
+          </label>
+          <select
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className="p-3 w-full border rounded-lg"
+          >
+            <option value="Rajshahi">Rajshahi</option>
+            <option value="Godagari">Godagari</option>
+          </select>
         </div>
       </div>
       <button

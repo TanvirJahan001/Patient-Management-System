@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Filter from "./components/Filter";
 import PatientForm from "./components/PatientForm";
 import PatientList from "./components/PatientList";
-import TotalEarnings from "./components/TotalEarnings"; // Import TotalEarnings
+import TotalEarnings from "./components/TotalEarnings";
 
 export default function App() {
   const [patients, setPatients] = useState(() => {
@@ -12,6 +12,7 @@ export default function App() {
   });
 
   const [filterValue, setFilterValue] = useState("");
+  const [locationFilter, setLocationFilter] = useState(""); // New location filter state
 
   useEffect(() => {
     localStorage.setItem("patients", JSON.stringify(patients));
@@ -30,16 +31,22 @@ export default function App() {
         <PatientForm onAddPatient={handleAddPatient} />
       </div>
       <div className="bg-white rounded-xl shadow-md p-6 mb-6">
-        <Filter value={filterValue} setValue={setFilterValue} />
+        <Filter
+          value={filterValue}
+          setValue={setFilterValue}
+          locationFilter={locationFilter}
+          setLocationFilter={setLocationFilter}
+        />
         <PatientList
           patients={patients}
           filterValue={filterValue}
+          locationFilter={locationFilter}
           deletePatient={(id) =>
             setPatients(patients.filter((patient) => patient.id !== id))
           }
         />
       </div>
-      <TotalEarnings patients={patients} /> {/* Add TotalEarnings here */}
+      <TotalEarnings patients={patients} />
     </div>
   );
 }

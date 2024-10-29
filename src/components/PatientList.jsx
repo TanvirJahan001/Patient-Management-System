@@ -1,16 +1,23 @@
 // src/components/PatientList.js
 import React from "react";
 
-const PatientList = ({ patients, filterValue, deletePatient }) => {
+const PatientList = ({
+  patients,
+  filterValue,
+  locationFilter,
+  deletePatient,
+}) => {
   const filteredPatients = patients.filter((patient) => {
     const lowerFilter = filterValue.toLowerCase();
-    return (
+    const matchesLocation =
+      !locationFilter || patient.location === locationFilter;
+    const matchesTextFilter =
       patient.name.toLowerCase().includes(lowerFilter) ||
       patient.phoneNumber.includes(lowerFilter) ||
       patient.illness.toLowerCase().includes(lowerFilter) ||
       patient.treatment.toLowerCase().includes(lowerFilter) ||
-      patient.price.toString().includes(lowerFilter)
-    );
+      patient.price.toString().includes(lowerFilter);
+    return matchesLocation && matchesTextFilter;
   });
 
   return (
@@ -28,8 +35,9 @@ const PatientList = ({ patients, filterValue, deletePatient }) => {
               <th className="py-3 px-4 text-sm font-medium">Phone</th>
               <th className="py-3 px-4 text-sm font-medium">Diagnosis</th>
               <th className="py-3 px-4 text-sm font-medium">Treatment</th>
-              <th className="py-3 px-4 text-sm font-medium">Price</th>
+              <th className="py-3 px-4 text-sm font-medium">Amount</th>
               <th className="py-3 px-4 text-sm font-medium">Date</th>
+              <th className="py-3 px-4 text-sm font-medium">Location</th>
               <th className="py-3 px-4 text-sm font-medium">Actions</th>
             </tr>
           </thead>
@@ -46,6 +54,7 @@ const PatientList = ({ patients, filterValue, deletePatient }) => {
                   <td className="py-3 px-4">
                     {new Date(patient.date).toLocaleDateString()}
                   </td>
+                  <td className="py-3 px-4">{patient.location}</td>
                   <td className="py-3 px-4 text-center">
                     <button
                       onClick={() => deletePatient(patient.id)}
@@ -58,7 +67,7 @@ const PatientList = ({ patients, filterValue, deletePatient }) => {
               ))
             ) : (
               <tr>
-                <td colSpan="8" className="py-3 text-center">
+                <td colSpan="9" className="py-3 text-center">
                   No patients found.
                 </td>
               </tr>
