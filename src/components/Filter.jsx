@@ -6,7 +6,7 @@ const Filter = ({ value, setValue, locationFilter, setLocationFilter }) => {
     <div className="mb-4">
       <input
         type="text"
-        placeholder="Filter by Name, Phone, Illness, Treatment, or Price"
+        placeholder="Filter by Name, Phone, Illness, Treatment, or Amount"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         className="border p-2 w-full rounded focus:outline-none focus:ring focus:ring-blue-300 mb-2"
