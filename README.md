@@ -23,7 +23,6 @@ A simple and user-friendly Patient Management System built with React. This appl
 
 ![Patient Management System](screenshot.png)
 
-_Replace the above image path with the actual path of your screenshot._
 
 ## Technologies Used
 
@@ -36,7 +35,7 @@ _Replace the above image path with the actual path of your screenshot._
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/patient-management-system.git
+   git clone https://github.com/TanvirJahan001/Patient-Management-System
    ```
 2. Navigate to the project directory:
    ```bash

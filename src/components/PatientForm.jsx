@@ -113,7 +113,7 @@ const PatientForm = ({ onAddPatient }) => {
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-600 mb-1">
-            Price (৳)
+            Amount (৳)
           </label>
           <input
             type="number"
@@ -121,7 +121,7 @@ const PatientForm = ({ onAddPatient }) => {
             onChange={(e) => setPrice(e.target.value)}
             required
             className="p-3 w-full border rounded-lg"
-            placeholder="Enter price"
+            placeholder="Enter Amount"
           />
         </div>
         <div>
