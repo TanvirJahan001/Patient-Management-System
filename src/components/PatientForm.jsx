@@ -146,8 +146,9 @@ const PatientForm = ({ onAddPatient }) => {
             onChange={(e) => setLocation(e.target.value)}
             className="p-3 w-full border rounded-lg"
           >
-            <option value="Rajshahi">Rajshahi</option>
             <option value="Godagari">Godagari</option>
+            <option value="Rajshahi">Rajshahi</option>
+            
           </select>
         </div>
       </div>
