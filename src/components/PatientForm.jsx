@@ -8,7 +8,7 @@ const PatientForm = ({ onAddPatient }) => {
   const [treatment, setTreatment] = useState("");
   const [price, setPrice] = useState("");
   const [date, setDate] = useState("");
-  const [location, setLocation] = useState("Rajshahi"); // Location dropdown state
+  const [location, setLocation] = useState("Godagari"); // Location dropdown state
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,7 +46,7 @@ const PatientForm = ({ onAddPatient }) => {
     setTreatment("");
     setPrice("");
     setDate("");
-    setLocation("Rajshahi");
+    setLocation("Godagari");
   };
 
   return (
